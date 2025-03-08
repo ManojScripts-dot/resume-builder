@@ -1,0 +1,773 @@
+:root {
+  --primary-color: #000000;
+  --secondary-color: #333333;
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #cccccc;
+  --section-spacing: 15px;
+  --line-height: 1.6;
+  --primary-button-color: #4c9f70;
+  --primary-button-hover: #45a05f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Computer Modern", Georgia, Times, serif;
+  line-height: var(--line-height);
+  color: var(--text-color);
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: var(--primary-button-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.section-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-size: 1.25rem;
+}
+
+.input-group {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.gpa-input {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.education-item,
+.project-item,
+.volunteer-item {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Add styling for soft skill items */
+.soft-skill-item {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.soft-skill-item input {
+  flex: 1;
+}
+
+.project-points,
+.responsibilities {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.project-points input,
+.responsibilities input {
+  width: 100%;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: border-color 0.15s ease-in-out;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn.primary {
+  background-color: var(--primary-button-color);
+  color: white;
+  border: none;
+}
+
+.btn.primary:hover {
+  background-color: var(--primary-button-hover);
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn.secondary:hover {
+  border-color: var(--primary-button-hover);
+  background-color: var(--background-color);
+}
+
+.skills-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background-color: var(--background-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-tag button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+.skill-tag button:hover {
+  opacity: 1;
+}
+
+.resume-preview {
+  background-color: white;
+  padding: 1.4cm;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 11pt;
+  position: sticky;
+  top: 100px;
+}
+
+.resume-preview h1 {
+  text-align: center;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.resume-preview .contact-info {
+  text-align: center;
+  font-size: 0.9em;
+  margin-bottom: var(--section-spacing);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.resume-preview section {
+  margin-bottom: var(--section-spacing);
+}
+
+.resume-preview .section-title {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--text-color);
+  margin-bottom: 8px;
+  padding-bottom: 2px;
+}
+
+.resume-preview .education-item,
+.resume-preview .project-item,
+.resume-preview .volunteer-item {
+  margin-bottom: 8px;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.resume-preview .item-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.resume-preview .item-subheader {
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+}
+
+.resume-preview .education-level-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+
+.resume-preview .education-item > div {
+  margin-bottom: 4px;
+}
+
+.resume-preview .courses-line {
+  margin-top: 6px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.resume-preview .courses-line::before {
+  content: "•";
+  position: absolute;
+  left: 15px;
+}
+
+.resume-preview .education-level {
+  font-style: normal;
+  font-weight: normal;
+}
+
+.resume-preview .project-item .item-header {
+  font-weight: normal;
+}
+
+.resume-preview .project-item .item-header span:first-child {
+  font-weight: bold;
+}
+
+.resume-preview .project-item .item-header a {
+  font-weight: normal;
+}
+
+.resume-preview .project-item ul,
+.resume-preview .volunteer-item ul,
+.resume-preview .soft-skills-list {
+  padding-left: 30px;
+  margin-top: 5px;
+}
+
+/* Ensure volunteer responsibilities are properly indented */
+.resume-preview .volunteer-item ul li,
+.resume-preview .soft-skills-list li {
+  margin-bottom: 4px;
+}
+
+.resume-preview .project-item .project-name {
+  font-weight: bold;
+}
+
+.resume-preview .technical-skills {
+  display: grid;
+  gap: 8px;
+}
+
+.resume-preview .skill-category {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.resume-preview .skill-category-name {
+  font-weight: bold;
+  min-width: 150px;
+}
+
+.resume-preview .skill-category-value {
+  flex: 1;
+  word-break: normal;
+}
+
+/* Add styles for the ongoing checkbox */
+.ongoing-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.ongoing-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.ongoing-checkbox input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+/* Add styles for the point input groups and small buttons */
+.point-input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.point-input-group input {
+  flex: 1;
+}
+
+.btn-small {
+  padding: 0.25rem 0.5rem;
+  min-width: 2rem;
+}
+
+/* Step indicator styles */
+.step-indicator {
+  margin-bottom: 2rem;
+}
+
+.step-dots {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.step-dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--border-color);
+  border-radius: 50%;
+  position: relative;
+}
+
+.step-dot.active {
+  background-color: var(--primary-button-color);
+}
+
+.step-dot::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background-color: var(--border-color);
+  width: 100%;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+}
+
+.step-dot:last-child::before {
+  display: none;
+}
+
+.step-dot.active::before {
+  background-color: var(--primary-button-color);
+}
+
+.step-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.step-label {
+  text-align: center;
+  color: var(--secondary-color);
+  opacity: 0.7;
+  width: 16.66%;
+}
+
+.step-label.active {
+  color: var(--primary-button-color);
+  font-weight: bold;
+  opacity: 1;
+}
+
+/* Form step styles */
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.step-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+/* Add a specific class for PDF printing that will only be used when generating PDFs */
+.pdf-mode {
+  font-size: 10pt !important;
+  line-height: 1.3 !important;
+}
+
+.pdf-mode h1 {
+  font-size: 14pt !important;
+  margin-bottom: 6px !important;
+}
+
+.pdf-mode .contact-info {
+  margin-bottom: 8px !important;
+  gap: 12px !important;
+  font-size: 9pt !important;
+}
+
+.pdf-mode .section-title {
+  margin-bottom: 4px !important;
+  font-size: 11pt !important;
+}
+
+.pdf-mode section {
+  margin-bottom: 8px !important;
+}
+
+.pdf-mode .education-item,
+.pdf-mode .project-item,
+.pdf-mode .volunteer-item {
+  margin-bottom: 6px !important;
+}
+
+.pdf-mode ul {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  padding-left: 20px !important;
+}
+
+.pdf-mode li {
+  margin-bottom: 2px !important;
+}
+
+.pdf-mode .item-header,
+.pdf-mode .item-subheader {
+  margin-bottom: 2px !important;
+}
+
+.pdf-mode .technical-skills {
+  gap: 4px !important;
+}
+
+.pdf-mode .skill-category {
+  gap: 4px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.pdf-mode .skill-category-name {
+  min-width: 120px !important;
+  font-size: 9pt !important;
+}
+
+.pdf-mode .skill-category-value {
+  font-size: 9pt !important;
+  word-break: normal !important;
+}
+
+/* More compact PDF mode for when content is too large */
+.pdf-compact {
+  font-size: 9pt !important;
+  line-height: 1.2 !important;
+}
+
+.pdf-compact h1 {
+  font-size: 12pt !important;
+  margin-bottom: 4px !important;
+}
+
+.pdf-compact .contact-info {
+  margin-bottom: 6px !important;
+  gap: 8px !important;
+  font-size: 8pt !important;
+}
+
+.pdf-compact .section-title {
+  margin-bottom: 3px !important;
+  font-size: 10pt !important;
+}
+
+.pdf-compact section {
+  margin-bottom: 6px !important;
+}
+
+.pdf-compact .skill-category-name {
+  min-width: 100px !important;
+}
+
+/* Improved responsive design for all screen sizes */
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-preview {
+    width: 100%;
+    min-height: auto;
+    padding: 1cm;
+    position: static;
+  }
+
+  .preview-section {
+    order: 2;
+  }
+
+  .editor-section {
+    order: 1;
+  }
+}
+
+@media (max-width: 992px) {
+  .resume-preview {
+    padding: 0.8cm;
+    font-size: 10pt;
+  }
+
+  .section-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .logo {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .point-input-group {
+    position: relative;
+    padding-right: 2.5rem;
+  }
+
+  .point-input-group input {
+    width: 100%;
+  }
+
+  .btn-small {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .resume-preview {
+    padding: 0.6cm;
+    font-size: 9pt;
+  }
+
+  .resume-preview h1 {
+    font-size: 1.3em;
+  }
+
+  .resume-preview .contact-info {
+    gap: 12px;
+  }
+
+  .step-labels {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-container {
+    padding: 1rem;
+  }
+
+  .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .resume-preview {
+    padding: 0.5cm;
+    font-size: 8pt;
+  }
+
+  .gpa-input {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links button {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .resume-preview .contact-info {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .resume-preview .item-header,
+  .resume-preview .item-subheader,
+  .resume-preview .education-level-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .soft-skill-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .soft-skill-item button {
+    align-self: flex-end;
+    margin-top: -2.5rem;
+  }
+
+  .step-labels {
+    display: none;
+  }
+
+  .step-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .resume-preview {
+    padding: 0.4cm;
+    font-size: 7pt;
+  }
+
+  .resume-preview h1 {
+    font-size: 1.2em;
+  }
+
+  .resume-preview .section-title {
+    font-size: 1em;
+  }
+
+  input,
+  textarea {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .step-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .step-buttons button {
+    width: 100%;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 320px) {
+  .section-container {
+    padding: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  input,
+  textarea {
+    padding: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+}
+

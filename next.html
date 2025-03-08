@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Resume Builder</a>
+            <div class="nav-links">
+                <button id="newResumeBtn" class="btn secondary"><i class="fas fa-file"></i> New Resume</button>
+                <button id="saveBtn" class="btn"><i class="fas fa-save"></i> Save</button>
+                <button id="downloadBtn" class="btn primary"><i class="fas fa-download"></i> Download PDF</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="editor-section">
+                <div class="section-container">
+                    <!-- Step Indicator -->
+                    <div class="step-indicator">
+                        <div class="step-dots">
+                            <span class="step-dot active" data-step="1"></span>
+                            <span class="step-dot" data-step="2"></span>
+                            <span class="step-dot" data-step="3"></span>
+                            <span class="step-dot" data-step="4"></span>
+                            <span class="step-dot" data-step="5"></span>
+                            <span class="step-dot" data-step="6"></span>
+                        </div>
+                        <div class="step-labels">
+                            <span class="step-label active">Personal</span>
+                            <span class="step-label">Education</span>
+                            <span class="step-label">Projects</span>
+                            <span class="step-label">Volunteer</span>
+                            <span class="step-label">Soft Skills</span>
+                            <span class="step-label">Tech Skills</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" id="step1">
+                        <h2>Personal Information</h2>
+                        <div class="input-group">
+                            <input type="text" id="fullName" placeholder="Full Name">
+                            <input type="tel" id="phone" placeholder="Phone Number">
+                            <input type="email" id="email" placeholder="Email">
+                            <input type="text" id="github" placeholder="GitHub URL">
+                            <input type="text" id="portfolio" placeholder="Portfolio URL">
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Education -->
+                    <div class="form-step" id="step2">
+                        <h2>Education</h2>
+                        <div id="educationList">
+                            <!-- Education entries will be added here -->
+                        </div>
+                        <button id="addEducation" class="btn secondary"><i class="fas fa-plus"></i> Add Education</button>
+                        <div class="step-buttons">
+                            <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Projects -->
+                    <div class="form-step" id="step3">
+                        <h2>Projects</h2>
+                        <div id="projectsList">
+                            <!-- Projects will be added here -->
+                        </div>
+                        <button id="addProject" class="btn secondary"><i class="fas fa-plus"></i> Add Project</button>
+                        <div class="step-buttons">
+                            <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Volunteer Work -->
+                    <div class="form-step" id="step4">
+                        <h2>Volunteer Work</h2>
+                        <div id="volunteerList">
+                            <!-- Volunteer work will be added here -->
+                        </div>
+                        <button id="addVolunteer" class="btn secondary"><i class="fas fa-plus"></i> Add Volunteer Work</button>
+                        <div class="step-buttons">
+                            <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Soft Skills -->
+                    <div class="form-step" id="step5">
+                        <h2>Soft Skills</h2>
+                        <div id="softSkillsList">
+                            <!-- Soft skills will be added here -->
+                        </div>
+                        <button id="addSoftSkill" class="btn secondary"><i class="fas fa-plus"></i> Add Soft Skill</button>
+                        <div class="step-buttons">
+                            <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Technical Skills -->
+                    <div class="form-step" id="step6">
+                        <h2>Technical Skills</h2>
+                        <div class="technical-skills-section">
+                            <div class="skill-category">
+                                <input type="text" id="languages" placeholder="Programming Languages">
+                            </div>
+                            <div class="skill-category">
+                                <input type="text" id="developerTools" placeholder="Developer Tools">
+                            </div>
+                            <div class="skill-category">
+                                <input type="text" id="frameworks" placeholder="Libraries/Frameworks">
+                            </div>
+                            <div class="skill-category">
+                                <input type="text" id="designTools" placeholder="Designing Tools">
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button class="btn primary" id="finalizeBtn">Finalize Resume</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <div id="resumePreview" class="resume-preview">
+                    <!-- Resume preview will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Replace html2pdf with jsPDF and html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
