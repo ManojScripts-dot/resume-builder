@@ -1,4 +1,3 @@
-// Update the state structure to include soft skills as an array
 let state = {
   personalInfo: {
     fullName: "",
@@ -20,7 +19,6 @@ let state = {
   currentStep: 1,
 }
 
-// Error handling wrapper
 function handleError(fn, context = "") {
   return function (...args) {
     try {
@@ -32,7 +30,6 @@ function handleError(fn, context = "") {
   }
 }
 
-// Add functions to handle soft skills as a list
 function updateSoftSkill(index, value) {
   if (state.softSkills[index] !== undefined) {
     state.softSkills[index] = value
@@ -52,7 +49,6 @@ function removeSoftSkill(index) {
   updatePreview()
 }
 
-// Add these new functions to remove individual points
 
 function removeProjectPoint(id, index) {
   const project = state.projects.find((proj) => proj.id === id)
@@ -61,7 +57,7 @@ function removeProjectPoint(id, index) {
     updateProjectsList()
     updatePreview()
   } else if (project) {
-    // Don't remove the last point, just clear it
+
     project.points[0] = ""
     updateProjectsList()
     updatePreview()
@@ -75,14 +71,13 @@ function removeVolunteerResponsibility(id, index) {
     updateVolunteerList()
     updatePreview()
   } else if (volunteer) {
-    // Don't remove the last responsibility, just clear it
+
     volunteer.responsibilities[0] = ""
     updateVolunteerList()
     updatePreview()
   }
 }
 
-// Update the updateProjectsList function to include remove buttons for points
 function updateProjectsList() {
   const projectsList = document.getElementById("projectsList")
   if (!projectsList) return
@@ -115,7 +110,6 @@ function updateProjectsList() {
     .join("")
 }
 
-// Update the updateVolunteerList function to include remove buttons for responsibilities
 function updateVolunteerList() {
   const volunteerList = document.getElementById("volunteerList")
   if (!volunteerList) return
@@ -148,7 +142,6 @@ function updateVolunteerList() {
     .join("")
 }
 
-// Update the updateSoftSkillsList function to include remove buttons
 function updateSoftSkillsList() {
   const softSkillsList = document.getElementById("softSkillsList")
   if (!softSkillsList) return
@@ -165,17 +158,16 @@ function updateSoftSkillsList() {
     .join("")
 }
 
-// Function to navigate between steps
 function goToStep(stepNumber) {
-  // Hide all steps
+
   document.querySelectorAll(".form-step").forEach((step) => {
     step.classList.remove("active")
   })
 
-  // Show the current step
+
   document.getElementById(`step${stepNumber}`).classList.add("active")
 
-  // Update step indicators
+
   document.querySelectorAll(".step-dot").forEach((dot) => {
     dot.classList.remove("active")
   })
@@ -183,22 +175,21 @@ function goToStep(stepNumber) {
     label.classList.remove("active")
   })
 
-  // Activate current step and all previous steps
+
   for (let i = 1; i <= stepNumber; i++) {
     document.querySelector(`.step-dot[data-step="${i}"]`).classList.add("active")
   }
   document.querySelectorAll(".step-label")[stepNumber - 1].classList.add("active")
 
-  // Update state
+
   state.currentStep = stepNumber
 }
 
-// Update setupEventListeners to include step navigation
 function setupEventListeners() {
   try {
     console.log("Setting up event listeners...")
 
-    // Step navigation
+
     document.querySelectorAll(".next-step").forEach((button) => {
       button.addEventListener("click", () => {
         goToStep(state.currentStep + 1)
@@ -215,14 +206,14 @@ function setupEventListeners() {
       alert("Your resume is complete! You can now download it as a PDF.")
     })
 
-    // Step dots for direct navigation
+
     document.querySelectorAll(".step-dot").forEach((dot) => {
       dot.addEventListener("click", () => {
         goToStep(Number.parseInt(dot.getAttribute("data-step")))
       })
     })
 
-    // Personal information event listeners
+
     document.getElementById("fullName")?.addEventListener("input", (e) => {
       state.personalInfo.fullName = e.target.value
       updatePreview()
@@ -248,7 +239,7 @@ function setupEventListeners() {
       updatePreview()
     })
 
-    // Technical skills event listeners
+
     document.getElementById("languages")?.addEventListener("input", (e) => {
       state.technicalSkills.languages = e.target.value
       updatePreview()
@@ -269,7 +260,7 @@ function setupEventListeners() {
       updatePreview()
     })
 
-    // Education
+
     const addEducationBtn = document.getElementById("addEducation")
     if (addEducationBtn) {
       addEducationBtn.addEventListener("click", () => {
@@ -291,7 +282,7 @@ function setupEventListeners() {
       })
     }
 
-    // Projects
+
     const addProjectBtn = document.getElementById("addProject")
     if (addProjectBtn) {
       addProjectBtn.addEventListener("click", () => {
@@ -309,7 +300,7 @@ function setupEventListeners() {
       })
     }
 
-    // Volunteer Work
+
     const addVolunteerBtn = document.getElementById("addVolunteer")
     if (addVolunteerBtn) {
       addVolunteerBtn.addEventListener("click", () => {
@@ -327,13 +318,13 @@ function setupEventListeners() {
       })
     }
 
-    // Soft Skills
+
     const addSoftSkillBtn = document.getElementById("addSoftSkill")
     if (addSoftSkillBtn) {
       addSoftSkillBtn.addEventListener("click", addSoftSkill)
     }
 
-    // Save and Download buttons
+
     const saveBtn = document.getElementById("saveBtn")
     const downloadBtn = document.getElementById("downloadBtn")
 
@@ -345,12 +336,12 @@ function setupEventListeners() {
       downloadBtn.addEventListener("click", downloadPDF)
     }
 
-    // New Resume button
+
     const newResumeBtn = document.getElementById("newResumeBtn")
     if (newResumeBtn) {
       newResumeBtn.addEventListener("click", () => {
         if (confirm("Are you sure you want to start a new resume? This will clear all current data.")) {
-          // Reset state to initial values
+
           state = {
             personalInfo: {
               fullName: "",
@@ -371,11 +362,11 @@ function setupEventListeners() {
             },
             currentStep: 1,
           }
-          // Update UI with empty state
+
           updateUI()
-          // Reset to step 1
+
           goToStep(1)
-          // Clear localStorage
+
           localStorage.removeItem("resumeData")
           alert("Started a new resume!")
         }
@@ -389,10 +380,9 @@ function setupEventListeners() {
   }
 }
 
-// Update updateUI to handle soft skills as a list
 function updateUI() {
   try {
-    // Update personal information
+
     Object.keys(state.personalInfo).forEach((key) => {
       const element = document.getElementById(key)
       if (element) {
@@ -400,10 +390,10 @@ function updateUI() {
       }
     })
 
-    // Update soft skills
+
     updateSoftSkillsList()
 
-    // Update technical skills
+
     Object.keys(state.technicalSkills).forEach((key) => {
       const element = document.getElementById(key)
       if (element) {
@@ -411,7 +401,7 @@ function updateUI() {
       }
     })
 
-    // Update lists
+
     updateEducationList()
     updateProjectsList()
     updateVolunteerList()
@@ -426,7 +416,7 @@ function updateEducation(id, field, value) {
   if (education) {
     education[field] = value
 
-    // If the isOngoing field is changed, update the education list to show/hide the expected graduation field
+
     if (field === "isOngoing") {
       updateEducationList()
     }
@@ -537,110 +527,113 @@ function updateEducationList() {
     .join("")
 }
 
-// Modify the generatePDF function to better match the preview appearance
 function generatePDF() {
   try {
-    // Get the resume preview element
+
     const element = document.getElementById("resumePreview")
     if (!element) {
       console.error("Resume preview element not found")
       return
     }
 
-    // Create a temporary container for PDF generation
+
     const container = document.createElement("div")
     container.style.position = "absolute"
     container.style.left = "-9999px"
     container.style.top = "-9999px"
-    container.style.width = "210mm" // A4 width
+    container.style.width = "210mm"
 
-    // Clone the resume preview
+
     const clone = element.cloneNode(true)
 
-    // Add PDF mode class for specific styling
-    clone.classList.add("pdf-mode")
 
-    // Set styles for the clone - using larger font size to match preview better
-    clone.style.width = "210mm"
-    clone.style.padding = "1cm" // Standard padding
+    const computedStyle = window.getComputedStyle(element)
+
+
+    clone.style.fontFamily = computedStyle.fontFamily
+    clone.style.fontSize = computedStyle.fontSize
+    clone.style.lineHeight = computedStyle.lineHeight
+    clone.style.letterSpacing = computedStyle.letterSpacing
+    clone.style.fontWeight = computedStyle.fontWeight
+    clone.style.color = computedStyle.color
     clone.style.backgroundColor = "white"
-    clone.style.boxShadow = "none"
-    clone.style.minHeight = "0"
-    clone.style.fontSize = "10pt" // Larger font size for better readability
-    clone.style.lineHeight = "1.3" // Reasonable line height
 
-    // Add the clone to the container
+
+    clone.style.width = "210mm"
+    clone.style.height = "auto" 
+    clone.style.maxHeight = "297mm" 
+    clone.style.padding = "1.4cm" 
+    clone.style.boxSizing = "border-box"
+    clone.style.boxShadow = "none"
+    clone.style.overflow = "hidden" 
+
+
     container.appendChild(clone)
 
-    // Add the container to the document
+
     document.body.appendChild(container)
 
-    // Check if content might overflow and adjust if needed
+
     setTimeout(() => {
-      const contentHeight = clone.scrollHeight
-      const a4Height = 297 // A4 height in mm
-
-      // If content is too tall for A4, reduce font size and spacing
-      if (contentHeight > a4Height - 20) {
-        // 20mm buffer
-        clone.classList.add("pdf-compact")
-        clone.style.fontSize = "9pt"
-        clone.style.lineHeight = "1.2"
-
-        // If still too tall, reduce further
-        setTimeout(() => {
-          const newContentHeight = clone.scrollHeight
-          if (newContentHeight > a4Height - 10) {
-            clone.style.fontSize = "8pt"
-            clone.style.lineHeight = "1.1"
-          }
-
-          // Now generate the PDF
-          generatePDFFromClone(clone, container)
-        }, 100)
-      } else {
-        // Content fits, generate PDF
-        generatePDFFromClone(clone, container)
+      const opt = {
+        margin: [0, 0, 0, 0], 
+        filename: `${state.personalInfo.fullName.replace(/\s+/g, "_")}_resume.pdf`,
+        image: { type: "jpeg", quality: 1.0 }, 
+        html2canvas: {
+          scale: 2, 
+          useCORS: true,
+          logging: false,
+          letterRendering: true,
+          allowTaint: true,
+        },
+        jsPDF: {
+          unit: "mm",
+          format: "a4",
+          orientation: "portrait",
+          precision: 16, 
+          compress: true,
+          putOnlyUsedFonts: true,
+        },
+        pagebreak: { mode: ["avoid-all", "css", "legacy"] },
+        enableLinks: true,
       }
-    }, 100)
+
+
+      window
+        .html2pdf()
+        .set(opt)
+        .from(clone)
+        .toPdf()
+        .get("pdf")
+        .then((pdf) => {
+
+          if (pdf.internal.getNumberOfPages() > 1) {
+
+            for (let i = pdf.internal.getNumberOfPages(); i > 1; i--) {
+              pdf.deletePage(i)
+            }
+          }
+          return pdf
+        })
+        .save()
+        .then(() => {
+          console.log("PDF generated successfully")
+
+          document.body.removeChild(container)
+        })
+        .catch((err) => {
+          console.error("Error generating PDF:", err)
+
+          document.body.removeChild(container)
+          alert("There was an error generating the PDF. Please try again.")
+        })
+    }, 200)
   } catch (error) {
     console.error("Error in generatePDF:", error)
     alert("An error occurred while generating the PDF. Please try again.")
   }
 }
 
-// Helper function to actually generate the PDF
-function generatePDFFromClone(clone, container) {
-  // Enhanced PDF options for better fit
-  const opt = {
-    margin: [0.7, 0.7, 0.7, 0.7], // Standard margins [top, right, bottom, left] in cm
-    filename: `${state.personalInfo.fullName.replace(/\s+/g, "_")}_resume.pdf`,
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, logging: false },
-    jsPDF: { unit: "mm", format: "a4", orientation: "portrait", compress: true },
-    pagebreak: { mode: ["avoid-all", "css", "legacy"] }, // Avoid page breaks within elements
-  }
-
-  // Generate the PDF
-  window
-    .html2pdf()
-    .from(clone)
-    .set(opt)
-    .save()
-    .then(() => {
-      console.log("PDF generated successfully")
-      // Remove the temporary container
-      document.body.removeChild(container)
-    })
-    .catch((err) => {
-      console.error("Error generating PDF:", err)
-      // Remove the temporary container
-      document.body.removeChild(container)
-      alert("There was an error generating the PDF. Please try again.")
-    })
-}
-
-// Update downloadPDF to ensure A4 size and handle library loading
 function downloadPDF() {
   try {
     if (!state.personalInfo.fullName) {
@@ -650,11 +643,11 @@ function downloadPDF() {
 
     console.log("Starting PDF download...")
 
-    // Check if html2pdf is defined and available globally
+
     if (typeof window.html2pdf === "undefined") {
       console.error("html2pdf is not defined. Attempting to load the library...")
 
-      // Try to load the library dynamically
+
       const script = document.createElement("script")
       script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
       script.integrity =
@@ -664,36 +657,20 @@ function downloadPDF() {
 
       script.onload = () => {
         console.log("html2pdf library loaded successfully")
-        // Now that the library is loaded, proceed with PDF generation
+
         generatePDF()
       }
 
       script.onerror = () => {
         console.error("Failed to load html2pdf library")
-
-        // Try loading from alternative CDN
-        console.log("Trying alternative CDN...")
-        const fallbackScript = document.createElement("script")
-        fallbackScript.src = "https://unpkg.com/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"
-
-        fallbackScript.onload = () => {
-          console.log("html2pdf loaded from fallback CDN")
-          generatePDF()
-        }
-
-        fallbackScript.onerror = () => {
-          console.error("Failed to load html2pdf from fallback CDN")
-          alert("Failed to load the PDF generation library. Please check your internet connection and try again.")
-        }
-
-        document.head.appendChild(fallbackScript)
+        alert("Failed to load the PDF generation library. Please check your internet connection and try again.")
       }
 
       document.head.appendChild(script)
       return
     }
 
-    // If the library is already available, proceed with PDF generation
+
     generatePDF()
   } catch (error) {
     console.error("Error in downloadPDF:", error)
@@ -701,8 +678,7 @@ function downloadPDF() {
   }
 }
 
-// Declare updatePreview and saveResume
-// Modify the updatePreview function to make technical skills more compact for PDF
+
 function updatePreview() {
   try {
     console.log("Updating preview...")
@@ -712,10 +688,10 @@ function updatePreview() {
       return
     }
 
-    // For debugging
+
     console.log("Current state:", JSON.stringify(state))
 
-    // Sanitize state data
+
     const sanitizedState = {
       ...state,
       personalInfo: { ...state.personalInfo },
@@ -900,7 +876,6 @@ function updatePreview() {
   }
 }
 
-// Replace the placeholder saveResume function with the actual implementation
 function saveResume() {
   try {
     localStorage.setItem("resumeData", JSON.stringify(state))
@@ -911,28 +886,27 @@ function saveResume() {
   }
 }
 
-// Initialize the application
 document.addEventListener("DOMContentLoaded", () => {
   try {
     console.log("Initializing application...")
-    // Load saved data if exists
+
     const savedState = localStorage.getItem("resumeData")
     if (savedState) {
       state = JSON.parse(savedState)
       updateUI()
-      // Go to the saved step or default to step 1
+
       goToStep(state.currentStep || 1)
     } else {
-      // Initialize with empty state
+
       updateUI()
-      // Start at step 1
+
       goToStep(1)
     }
 
-    // Set up event listeners
+
     setupEventListeners()
 
-    // Make sure preview is updated initially
+
     updatePreview()
 
     console.log("Application initialized successfully")
@@ -941,6 +915,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-// Initialize the preview
 updatePreview()
 

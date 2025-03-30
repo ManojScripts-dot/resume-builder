@@ -1,0 +1,34 @@
+# Ignore node modules and package files
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore build and dist folders
+dist/
+build/
+
+# Ignore dependency folders
+bower_components/
+
+# Ignore logs and temporary files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore IDE and editor config files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore cache files
+*.cache

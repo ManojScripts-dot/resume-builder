@@ -12,18 +12,18 @@
             font-family: "Computer Modern", Georgia, Times, serif;
         }
 
-        /* Background */
+        
         body {
-            background-color: #F4F7FA; /* Light blueish background */
+            background-color: #F4F7FA; 
         }
 
-        /* Navbar Styles */
+        
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background: #FFFFFF; /* White background */
+            background: #FFFFFF; 
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
@@ -35,14 +35,14 @@
         .navbar .logo {
             font-size: 2rem;
             font-weight: bold;
-            color: #333333; /* Darker gray */
+            color: #333333; 
         }
 
         .navbar .nav-btn {
             padding: 12px 24px;
             font-size: 1.1rem;
             color: white;
-            background: #4C9F70; /* Greenish shade */
+            background: #4C9F70; 
             text-decoration: none;
             border-radius: 5px;
             transition: 0.3s ease-in-out;
@@ -52,11 +52,11 @@
         }
 
         .navbar .nav-btn:hover {
-            background: #45a05f; /* Slightly darker green */
+            background: #45a05f; 
             transform: scale(1.1);
         }
 
-        /* Hero Section */
+        
         .hero {
             display: flex;
             align-items: center;
@@ -66,7 +66,7 @@
             padding: 0 5%;
             margin-top: 70px;
             animation: fadeIn 1s ease-in-out;
-            flex-wrap: wrap; /* Ensures elements stack on smaller screens */
+            flex-wrap: wrap; 
         }
 
         .hero .left {
@@ -75,20 +75,20 @@
             flex-direction: column;
             justify-content: center;
             padding-left: 30px;
-            padding-right: 20px; /* Added gap between text and image */
-            text-align: left; /* Align text to the left */
+            padding-right: 20px; 
+            text-align: left; 
         }
 
         .hero .left p {
-            font-size: 1.4rem; /* Slightly larger text */
-            color: #333333; /* Dark gray */
+            font-size: 1.4rem; 
+            color: #333333; 
             line-height: 1.6;
             animation: fadeInLeft 1s ease-in-out;
         }
 
         .hero .left p strong {
             font-weight: bold;
-            color: #4C9F70; /* Highlight color for the first sentence */
+            color: #4C9F70; 
         }
 
         .btn {
@@ -96,7 +96,7 @@
             padding: 14px 28px;
             font-size: 1.6rem;
             color: white;
-            background: #4C9F70; /* Greenish color */
+            background: #4C9F70; 
             text-decoration: none;
             border-radius: 5px;
             transition: 0.3s ease-in-out;
@@ -119,12 +119,12 @@
             background: url('/assets/hero1.png') no-repeat center center/cover;
             border-radius: 20px;
             animation: slideInRight 1s ease-in-out;
-            margin-left: 30px; /* Added gap between image and text */
-            min-height: 300px; /* Ensures minimum height for the image */
-            background-color: #cccccc; /* Temporary background color for visibility */
+            margin-left: 30px; 
+            min-height: 300px; 
+            background-color: #cccccc; 
         }
 
-        /* Animation for Text */
+        
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -167,7 +167,7 @@
             }
         }
 
-        /* Media Queries for responsiveness */
+        
         @media (max-width: 1024px) {
             .navbar .logo {
                 font-size: 1.6rem;
@@ -176,15 +176,15 @@
             .hero {
                 padding: 0 3%;
                 height: auto;
-                flex-direction: column; /* Stack elements vertically on smaller screens */
-                padding-top: 120px; /* Added padding to avoid navbar overlap */
+                flex-direction: column; 
+                padding-top: 120px; 
             }
 
             .hero .left {
                 padding-left: 20px;
                 padding-right: 20px;
                 margin-bottom: 20px;
-                text-align: left; /* Align text to the left on smaller screens */
+                text-align: left; 
             }
 
             .hero .right {
@@ -192,11 +192,11 @@
                 width: 100%;
                 height: 50%;
                 border-radius: 10px;
-                margin-top: 20px; /* Add gap between text and image */
+                margin-top: 20px; 
             }
 
             .hero .left p {
-                font-size: 1.2rem; /* Adjusted font size for smaller screens */
+                font-size: 1.2rem; 
             }
 
             .btn {
@@ -219,9 +219,9 @@
                 padding: 10px 20px;
             }
 
-            /* Increase font size of the first sentence on mobile screens */
+            
             .hero .left p strong {
-                font-size: 1.3rem; /* Increased size for mobile */
+                font-size: 1.3rem; 
             }
         }
 
@@ -239,13 +239,13 @@
                 padding: 8px 16px;
             }
 
-            /* Increase font size of the first sentence on very small mobile screens */
+            
             .hero .left p strong {
-                font-size: 1.2rem; /* Slightly larger for the first sentence */
+                font-size: 1.2rem; 
             }
         }
 
-        /* Even more responsive adjustments for extremely small screens */
+        
         @media (max-width: 320px) {
             .navbar .logo {
                 font-size: 1rem;
