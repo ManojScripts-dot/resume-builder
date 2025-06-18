@@ -36,10 +36,10 @@
                         <div class="step-labels">
                             <span class="step-label active">Personal</span>
                             <span class="step-label">Education</span>
-                            <span class="step-label">Projects</span>
-                            <span class="step-label">Volunteer</span>
-                            <span class="step-label">Soft Skills</span>
                             <span class="step-label">Tech Skills</span>
+                            <span class="step-label">Projects</span>
+                            <span class="step-label">Work</span>
+                            <span class="step-label">Soft Skills</span>
                         </div>
                     </div>
 
@@ -71,8 +71,34 @@
                         </div>
                     </div>
 
-                    <!-- Step 3: Projects -->
+                    <!-- Step 6: Technical Skills -->
                     <div class="form-step" id="step3">
+                        <h2>Technical Skills</h2>
+                        <div class="technical-skills-section">
+                            <div class="skill-category">
+                                <input type="text" id="languages" placeholder="Programming Languages">
+                            </div>
+                            <div class="skill-category">
+                                <input type="text" id="frameworks" placeholder="Libraries/Frameworks">
+                            </div>
+                            <div class="skill-category">
+                                <input type="text" id="databases" placeholder="Databases">
+                            </div>
+                            <div class="skill-category">
+                                <input type="text" id="developerTools" placeholder="Developer Tools">
+                            </div>
+                            <div class="skill-category">
+                                <input type="text" id="designTools" placeholder="Designing Tools">
+                            </div>
+                        </div>
+                        <div class="step-buttons">
+                            <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button class="btn primary" id="finalizeBtn">Finalize Resume</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Projects -->
+                    <div class="form-step" id="step4">
                         <h2>Projects</h2>
                         <div id="projectsList">
                             <!-- Projects will be added here -->
@@ -85,12 +111,12 @@
                     </div>
 
                     <!-- Step 4: Volunteer Work -->
-                    <div class="form-step" id="step4">
-                        <h2>Volunteer Work</h2>
+                    <div class="form-step" id="step5">
+                        <h2>Work Experience</h2>
                         <div id="volunteerList">
                             <!-- Volunteer work will be added here -->
                         </div>
-                        <button id="addVolunteer" class="btn secondary"><i class="fas fa-plus"></i> Add Volunteer Work</button>
+                        <button id="addVolunteer" class="btn secondary"><i class="fas fa-plus"></i> Add Work</button>
                         <div class="step-buttons">
                             <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
                             <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
@@ -98,7 +124,7 @@
                     </div>
 
                     <!-- Step 5: Soft Skills -->
-                    <div class="form-step" id="step5">
+                    <div class="form-step" id="step6">
                         <h2>Soft Skills</h2>
                         <div id="softSkillsList">
                             <!-- Soft skills will be added here -->
@@ -107,29 +133,6 @@
                         <div class="step-buttons">
                             <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
                             <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-
-                    <!-- Step 6: Technical Skills -->
-                    <div class="form-step" id="step6">
-                        <h2>Technical Skills</h2>
-                        <div class="technical-skills-section">
-                            <div class="skill-category">
-                                <input type="text" id="languages" placeholder="Programming Languages">
-                            </div>
-                            <div class="skill-category">
-                                <input type="text" id="developerTools" placeholder="Developer Tools">
-                            </div>
-                            <div class="skill-category">
-                                <input type="text" id="frameworks" placeholder="Libraries/Frameworks">
-                            </div>
-                            <div class="skill-category">
-                                <input type="text" id="designTools" placeholder="Designing Tools">
-                            </div>
-                        </div>
-                        <div class="step-buttons">
-                            <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
-                            <button class="btn primary" id="finalizeBtn">Finalize Resume</button>
                         </div>
                     </div>
                 </div>
@@ -150,4 +153,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-

@@ -15,6 +15,7 @@ let state = {
     developerTools: "",
     frameworks: "",
     designTools: "",
+    databases: "",
   },
   currentStep: 1,
 }
@@ -49,7 +50,6 @@ function removeSoftSkill(index) {
   updatePreview()
 }
 
-
 function removeProjectPoint(id, index) {
   const project = state.projects.find((proj) => proj.id === id)
   if (project && project.points.length > 1) {
@@ -57,7 +57,6 @@ function removeProjectPoint(id, index) {
     updateProjectsList()
     updatePreview()
   } else if (project) {
-
     project.points[0] = ""
     updateProjectsList()
     updatePreview()
@@ -71,7 +70,6 @@ function removeVolunteerResponsibility(id, index) {
     updateVolunteerList()
     updatePreview()
   } else if (volunteer) {
-
     volunteer.responsibilities[0] = ""
     updateVolunteerList()
     updatePreview()
@@ -159,14 +157,11 @@ function updateSoftSkillsList() {
 }
 
 function goToStep(stepNumber) {
-
   document.querySelectorAll(".form-step").forEach((step) => {
     step.classList.remove("active")
   })
 
-
   document.getElementById(`step${stepNumber}`).classList.add("active")
-
 
   document.querySelectorAll(".step-dot").forEach((dot) => {
     dot.classList.remove("active")
@@ -175,12 +170,10 @@ function goToStep(stepNumber) {
     label.classList.remove("active")
   })
 
-
   for (let i = 1; i <= stepNumber; i++) {
     document.querySelector(`.step-dot[data-step="${i}"]`).classList.add("active")
   }
   document.querySelectorAll(".step-label")[stepNumber - 1].classList.add("active")
-
 
   state.currentStep = stepNumber
 }
@@ -188,7 +181,6 @@ function goToStep(stepNumber) {
 function setupEventListeners() {
   try {
     console.log("Setting up event listeners...")
-
 
     document.querySelectorAll(".next-step").forEach((button) => {
       button.addEventListener("click", () => {
@@ -206,13 +198,11 @@ function setupEventListeners() {
       alert("Your resume is complete! You can now download it as a PDF.")
     })
 
-
     document.querySelectorAll(".step-dot").forEach((dot) => {
       dot.addEventListener("click", () => {
         goToStep(Number.parseInt(dot.getAttribute("data-step")))
       })
     })
-
 
     document.getElementById("fullName")?.addEventListener("input", (e) => {
       state.personalInfo.fullName = e.target.value
@@ -239,7 +229,6 @@ function setupEventListeners() {
       updatePreview()
     })
 
-
     document.getElementById("languages")?.addEventListener("input", (e) => {
       state.technicalSkills.languages = e.target.value
       updatePreview()
@@ -260,6 +249,10 @@ function setupEventListeners() {
       updatePreview()
     })
 
+    document.getElementById("databases")?.addEventListener("input", (e) => {
+      state.technicalSkills.databases = e.target.value
+      updatePreview()
+    })
 
     const addEducationBtn = document.getElementById("addEducation")
     if (addEducationBtn) {
@@ -282,7 +275,6 @@ function setupEventListeners() {
       })
     }
 
-
     const addProjectBtn = document.getElementById("addProject")
     if (addProjectBtn) {
       addProjectBtn.addEventListener("click", () => {
@@ -299,7 +291,6 @@ function setupEventListeners() {
         updatePreview()
       })
     }
-
 
     const addVolunteerBtn = document.getElementById("addVolunteer")
     if (addVolunteerBtn) {
@@ -318,12 +309,10 @@ function setupEventListeners() {
       })
     }
 
-
     const addSoftSkillBtn = document.getElementById("addSoftSkill")
     if (addSoftSkillBtn) {
       addSoftSkillBtn.addEventListener("click", addSoftSkill)
     }
-
 
     const saveBtn = document.getElementById("saveBtn")
     const downloadBtn = document.getElementById("downloadBtn")
@@ -336,12 +325,10 @@ function setupEventListeners() {
       downloadBtn.addEventListener("click", downloadPDF)
     }
 
-
     const newResumeBtn = document.getElementById("newResumeBtn")
     if (newResumeBtn) {
       newResumeBtn.addEventListener("click", () => {
         if (confirm("Are you sure you want to start a new resume? This will clear all current data.")) {
-
           state = {
             personalInfo: {
               fullName: "",
@@ -359,6 +346,7 @@ function setupEventListeners() {
               developerTools: "",
               frameworks: "",
               designTools: "",
+              databases: "",
             },
             currentStep: 1,
           }
@@ -382,7 +370,6 @@ function setupEventListeners() {
 
 function updateUI() {
   try {
-
     Object.keys(state.personalInfo).forEach((key) => {
       const element = document.getElementById(key)
       if (element) {
@@ -390,9 +377,7 @@ function updateUI() {
       }
     })
 
-
     updateSoftSkillsList()
-
 
     Object.keys(state.technicalSkills).forEach((key) => {
       const element = document.getElementById(key)
@@ -400,7 +385,6 @@ function updateUI() {
         element.value = state.technicalSkills[key]
       }
     })
-
 
     updateEducationList()
     updateProjectsList()
@@ -415,7 +399,6 @@ function updateEducation(id, field, value) {
   const education = state.education.find((edu) => edu.id === id)
   if (education) {
     education[field] = value
-
 
     if (field === "isOngoing") {
       updateEducationList()
@@ -529,13 +512,11 @@ function updateEducationList() {
 
 function generatePDF() {
   try {
-
     const element = document.getElementById("resumePreview")
     if (!element) {
       console.error("Resume preview element not found")
       return
     }
-
 
     const container = document.createElement("div")
     container.style.position = "absolute"
@@ -543,12 +524,9 @@ function generatePDF() {
     container.style.top = "-9999px"
     container.style.width = "210mm"
 
-
     const clone = element.cloneNode(true)
 
-
     const computedStyle = window.getComputedStyle(element)
-
 
     clone.style.fontFamily = computedStyle.fontFamily
     clone.style.fontSize = computedStyle.fontSize
@@ -558,29 +536,25 @@ function generatePDF() {
     clone.style.color = computedStyle.color
     clone.style.backgroundColor = "white"
 
-
     clone.style.width = "210mm"
-    clone.style.height = "auto" 
-    clone.style.maxHeight = "297mm" 
-    clone.style.padding = "1.4cm" 
+    clone.style.height = "auto"
+    clone.style.maxHeight = "297mm"
+    clone.style.padding = "1.4cm"
     clone.style.boxSizing = "border-box"
     clone.style.boxShadow = "none"
-    clone.style.overflow = "hidden" 
-
+    clone.style.overflow = "hidden"
 
     container.appendChild(clone)
 
-
     document.body.appendChild(container)
-
 
     setTimeout(() => {
       const opt = {
-        margin: [0, 0, 0, 0], 
+        margin: [0, 0, 0, 0],
         filename: `${state.personalInfo.fullName.replace(/\s+/g, "_")}_resume.pdf`,
-        image: { type: "jpeg", quality: 1.0 }, 
+        image: { type: "jpeg", quality: 1.0 },
         html2canvas: {
-          scale: 2, 
+          scale: 2,
           useCORS: true,
           logging: false,
           letterRendering: true,
@@ -590,14 +564,13 @@ function generatePDF() {
           unit: "mm",
           format: "a4",
           orientation: "portrait",
-          precision: 16, 
+          precision: 16,
           compress: true,
           putOnlyUsedFonts: true,
         },
         pagebreak: { mode: ["avoid-all", "css", "legacy"] },
         enableLinks: true,
       }
-
 
       window
         .html2pdf()
@@ -606,9 +579,7 @@ function generatePDF() {
         .toPdf()
         .get("pdf")
         .then((pdf) => {
-
           if (pdf.internal.getNumberOfPages() > 1) {
-
             for (let i = pdf.internal.getNumberOfPages(); i > 1; i--) {
               pdf.deletePage(i)
             }
@@ -643,10 +614,8 @@ function downloadPDF() {
 
     console.log("Starting PDF download...")
 
-
     if (typeof window.html2pdf === "undefined") {
       console.error("html2pdf is not defined. Attempting to load the library...")
-
 
       const script = document.createElement("script")
       script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
@@ -670,7 +639,6 @@ function downloadPDF() {
       return
     }
 
-
     generatePDF()
   } catch (error) {
     console.error("Error in downloadPDF:", error)
@@ -678,7 +646,7 @@ function downloadPDF() {
   }
 }
 
-
+// Update the updatePreview function to include databases in the technical skills section
 function updatePreview() {
   try {
     console.log("Updating preview...")
@@ -688,9 +656,7 @@ function updatePreview() {
       return
     }
 
-
     console.log("Current state:", JSON.stringify(state))
-
 
     const sanitizedState = {
       ...state,
@@ -744,6 +710,68 @@ function updatePreview() {
             }
 
             ${
+              Object.values(sanitizedState.technicalSkills).some((value) => value)
+                ? `
+                <section>
+                    <div class="section-title">Technical Skills</div>
+                    <div class="technical-skills">
+                        ${
+                          sanitizedState.technicalSkills.languages
+                            ? `
+                            <div class="skill-category">
+                                <span class="skill-category-name">Languages:</span>
+                                <span class="skill-category-value">${sanitizedState.technicalSkills.languages}</span>
+                            </div>
+                        `
+                            : ""
+                        }
+                        ${
+                          sanitizedState.technicalSkills.frameworks
+                            ? `
+                            <div class="skill-category">
+                                <span class="skill-category-name">Libraries/Frameworks:</span>
+                                <span class="skill-category-value">${sanitizedState.technicalSkills.frameworks}</span>
+                            </div>
+                        `
+                            : ""
+                        }
+                        ${
+                          sanitizedState.technicalSkills.databases
+                            ? `
+                            <div class="skill-category">
+                                <span class="skill-category-name">Databases:</span>
+                                <span class="skill-category-value">${sanitizedState.technicalSkills.databases}</span>
+                            </div>
+                        `
+                            : ""
+                        }
+                        ${
+                          sanitizedState.technicalSkills.developerTools
+                            ? `
+                            <div class="skill-category">
+                                <span class="skill-category-name">Developer Tools:</span>
+                                <span class="skill-category-value">${sanitizedState.technicalSkills.developerTools}</span>
+                            </div>
+                        `
+                            : ""
+                        }
+                        ${
+                          sanitizedState.technicalSkills.designTools
+                            ? `
+                            <div class="skill-category">
+                                <span class="skill-category-name">Design Tools:</span>
+                                <span class="skill-category-value">${sanitizedState.technicalSkills.designTools}</span>
+                            </div>
+                        `
+                            : ""
+                        }
+                    </div>
+                </section>
+            `
+                : ""
+            }
+
+            ${
               sanitizedState.projects.length > 0
                 ? `
                 <section>
@@ -775,7 +803,7 @@ function updatePreview() {
               sanitizedState.volunteerWork.length > 0
                 ? `
                 <section>
-                    <div class="section-title">Volunteer Work</div>
+                    <div class="section-title">Work Experience</div>
                     ${sanitizedState.volunteerWork
                       .map(
                         (work) => `
@@ -818,58 +846,6 @@ function updatePreview() {
             `
                 : ""
             }
-
-            ${
-              Object.values(sanitizedState.technicalSkills).some((value) => value)
-                ? `
-                <section>
-                    <div class="section-title">Technical Skills</div>
-                    <div class="technical-skills">
-                        ${
-                          sanitizedState.technicalSkills.languages
-                            ? `
-                            <div class="skill-category">
-                                <span class="skill-category-name">Languages:</span>
-                                <span class="skill-category-value">${sanitizedState.technicalSkills.languages}</span>
-                            </div>
-                        `
-                            : ""
-                        }
-                        ${
-                          sanitizedState.technicalSkills.developerTools
-                            ? `
-                            <div class="skill-category">
-                                <span class="skill-category-name">Developer Tools:</span>
-                                <span class="skill-category-value">${sanitizedState.technicalSkills.developerTools}</span>
-                            </div>
-                        `
-                            : ""
-                        }
-                        ${
-                          sanitizedState.technicalSkills.frameworks
-                            ? `
-                            <div class="skill-category">
-                                <span class="skill-category-name">Libraries/Frameworks:</span>
-                                <span class="skill-category-value">${sanitizedState.technicalSkills.frameworks}</span>
-                            </div>
-                        `
-                            : ""
-                        }
-                        ${
-                          sanitizedState.technicalSkills.designTools
-                            ? `
-                            <div class="skill-category">
-                                <span class="skill-category-name">Designing Tools:</span>
-                                <span class="skill-category-value">${sanitizedState.technicalSkills.designTools}</span>
-                            </div>
-                        `
-                            : ""
-                        }
-                    </div>
-                </section>
-            `
-                : ""
-            }
         `
   } catch (error) {
     console.error("Error updating preview:", error)
@@ -897,15 +873,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       goToStep(state.currentStep || 1)
     } else {
-
       updateUI()
 
       goToStep(1)
     }
 
-
     setupEventListeners()
-
 
     updatePreview()
 
@@ -916,4 +889,3 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 updatePreview()
-
