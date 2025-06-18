@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 6: Technical Skills -->
+                    <!-- Step 3: Technical Skills -->
                     <div class="form-step" id="step3">
                         <h2>Technical Skills</h2>
                         <div class="technical-skills-section">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="step-buttons">
                             <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
-                            <button class="btn primary" id="finalizeBtn">Finalize Resume</button>
+                             <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
 
@@ -132,7 +132,7 @@
                         <button id="addSoftSkill" class="btn secondary"><i class="fas fa-plus"></i> Add Soft Skill</button>
                         <div class="step-buttons">
                             <button class="btn secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
-                            <button class="btn primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                            <button class="btn primary" id="finalizeBtn">Finalize Resume</button>
                         </div>
                     </div>
                 </div>
@@ -145,6 +145,18 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal for Save and New Resume -->
+    <div id="customModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <h3 id="modalTitle"></h3>
+        <p id="modalMessage"></p>
+        <div class="modal-buttons">
+          <button id="modalConfirm" class="btn primary">Confirm</button>
+          <button id="modalCancel" class="btn secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Replace html2pdf with jsPDF and html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

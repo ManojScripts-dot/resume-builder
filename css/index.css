@@ -1,0 +1,256 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Computer Modern", Georgia, Times, serif;
+        }
+
+        
+        body {
+            background-color: #F4F7FA; 
+        }
+
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: #FFFFFF; 
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333333; 
+        }
+
+        .navbar .nav-btn {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            color: white;
+            background: #4C9F70; 
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navbar .nav-btn:hover {
+            background: #45a05f; 
+            transform: scale(1.1);
+        }
+
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100vh;
+            padding: 0 5%;
+            margin-top: 70px;
+            animation: fadeIn 1s ease-in-out;
+            flex-wrap: wrap; 
+        }
+
+        .hero .left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 30px;
+            padding-right: 20px; 
+            text-align: left; 
+        }
+
+        .hero .left p {
+            font-size: 1.4rem; 
+            color: #333333; 
+            line-height: 1.6;
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .hero .left p strong {
+            font-weight: bold;
+            color: #4C9F70; 
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 1.6rem;
+            color: white;
+            background: #4C9F70; 
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            width: max-content;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #45a05f;
+            transform: scale(1.1);
+        }
+
+        .hero .right {
+            flex: 1;
+            height: 70%;
+            background: url('/assets/hero1.png') no-repeat center center/cover;
+            border-radius: 20px;
+            animation: slideInRight 1s ease-in-out;
+            margin-left: 30px; 
+            min-height: 300px; 
+            background-color: #cccccc; 
+        }
+
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        
+        @media (max-width: 1024px) {
+            .navbar .logo {
+                font-size: 1.6rem;
+            }
+
+            .hero {
+                padding: 0 3%;
+                height: auto;
+                flex-direction: column; 
+                padding-top: 120px; 
+            }
+
+            .hero .left {
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-bottom: 20px;
+                text-align: left; 
+            }
+
+            .hero .right {
+                margin-left: 0;
+                width: 100%;
+                height: 50%;
+                border-radius: 10px;
+                margin-top: 20px; 
+            }
+
+            .hero .left p {
+                font-size: 1.2rem; 
+            }
+
+            .btn {
+                font-size: 1.4rem;
+                padding: 12px 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .logo {
+                font-size: 1.4rem;
+            }
+
+            .hero .left p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                font-size: 1.2rem;
+                padding: 10px 20px;
+            }
+
+            
+            .hero .left p strong {
+                font-size: 1.3rem; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero .left p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+
+            
+            .hero .left p strong {
+                font-size: 1.2rem; 
+            }
+        }
+
+        
+        @media (max-width: 320px) {
+            .navbar .logo {
+                font-size: 1rem;
+            }
+
+            .hero .left p {
+                font-size: 0.8rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+        }

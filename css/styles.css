@@ -1,3 +1,49 @@
+/* Modal styles moved to the top to avoid overrides */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.modal-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modal-buttons .btn {
+  padding: 0.5rem 1.5rem;
+}
+
 :root {
   --primary-color: #000000;
   --secondary-color: #333333;
@@ -106,7 +152,6 @@ h2 {
   border-radius: 0.5rem;
   margin-bottom: 1rem;
 }
-
 
 .soft-skill-item {
   background: #f8f9fa;
@@ -224,7 +269,6 @@ textarea:focus {
   opacity: 1;
 }
 
-
 @media print {
   .resume-preview {
     padding: 1.4cm !important;
@@ -268,12 +312,10 @@ textarea:focus {
   }
 }
 
-
 @page {
   size: A4;
   margin: 0;
 }
-
 
 .resume-preview {
   background-color: white;
@@ -388,7 +430,6 @@ textarea:focus {
   margin-top: 5px;
 }
 
-
 .resume-preview .volunteer-item ul li,
 .resume-preview .soft-skills-list li {
   margin-bottom: 4px;
@@ -419,7 +460,6 @@ textarea:focus {
   word-break: normal;
 }
 
-
 .ongoing-checkbox {
   display: flex;
   align-items: center;
@@ -438,7 +478,6 @@ textarea:focus {
   margin-right: 0.5rem;
 }
 
-
 .point-input-group {
   display: flex;
   gap: 0.5rem;
@@ -454,7 +493,6 @@ textarea:focus {
   padding: 0.25rem 0.5rem;
   min-width: 2rem;
 }
-
 
 .step-indicator {
   margin-bottom: 2rem;
@@ -516,7 +554,6 @@ textarea:focus {
   opacity: 1;
 }
 
-
 .form-step {
   display: none;
 }
@@ -530,7 +567,6 @@ textarea:focus {
   justify-content: space-between;
   margin-top: 2rem;
 }
-
 
 .pdf-mode {
   font-size: 10pt !important;
@@ -598,7 +634,6 @@ textarea:focus {
   word-break: normal !important;
 }
 
-
 .pdf-compact {
   font-size: 9pt !important;
   line-height: 1.2 !important;
@@ -627,7 +662,6 @@ textarea:focus {
 .pdf-compact .skill-category-name {
   min-width: 100px !important;
 }
-
 
 @media (max-width: 1200px) {
   .container {
@@ -802,7 +836,6 @@ textarea:focus {
   }
 }
 
-
 @media (max-width: 320px) {
   .section-container {
     padding: 0.75rem;
@@ -824,4 +857,3 @@ textarea:focus {
     margin-bottom: 0.75rem;
   }
 }
-
