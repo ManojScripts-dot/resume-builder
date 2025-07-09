@@ -322,14 +322,12 @@ textarea:focus {
   padding: 1.4cm;
   width: 210mm;
   height: auto;
-  max-height: 297mm;
   margin: 0 auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   font-size: 11pt;
   position: sticky;
   top: 100px;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .resume-preview h1 {
@@ -352,6 +350,8 @@ textarea:focus {
 
 .resume-preview section {
   margin-bottom: var(--section-spacing);
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .resume-preview .section-title {

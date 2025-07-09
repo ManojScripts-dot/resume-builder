@@ -647,8 +647,14 @@ function generatePDF() {
     container.style.left = "-9999px";
     container.style.top = "-9999px";
     container.style.width = "210mm";
+    container.style.padding = '0';
+    container.style.margin = '0';
+    container.style.minHeight = null;
 
     const clone = element.cloneNode(true);
+
+    // Add a class for PDF/print mode
+    clone.classList.add('pdf-mode');
 
     const computedStyle = window.getComputedStyle(element);
 
@@ -662,11 +668,16 @@ function generatePDF() {
 
     clone.style.width = "210mm";
     clone.style.height = "auto";
-    clone.style.maxHeight = "297mm";
-    clone.style.padding = "1.4cm";
+    // Remove these for PDF rendering:
+    clone.style.maxHeight = null;
+    clone.style.overflow = null;
+    clone.style.height = 'auto';
+    clone.style.minHeight = null;
+    clone.style.paddingBottom = '0';
     clone.style.boxSizing = "border-box";
     clone.style.boxShadow = "none";
-    clone.style.overflow = "hidden";
+    // Remove min-height from container if set
+    container.style.minHeight = null;
 
     container.appendChild(clone);
 
@@ -706,11 +717,7 @@ function generatePDF() {
         .toPdf()
         .get("pdf")
         .then((pdf) => {
-          if (pdf.internal.getNumberOfPages() > 1) {
-            for (let i = pdf.internal.getNumberOfPages(); i > 1; i--) {
-              pdf.deletePage(i);
-            }
-          }
+          // Removed logic that deleted all but the first page
           return pdf;
         })
         .save()
